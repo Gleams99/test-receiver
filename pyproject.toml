@@ -25,7 +25,7 @@ execute-pytest = 'scripts.execute_tests:trigger_pytest'
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = [
-    "-vvs",
+    "-s",
     "--strict-markers",
     "--strict-config",
     "--junitxml=execution_report.xml",
