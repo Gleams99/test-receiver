@@ -1,0 +1,28 @@
+{
+  "or": [
+    {
+      "eq": [
+        "colour.Red",
+        true
+      ]
+    },
+    {
+      "eq": [
+        "colour.Yellow",
+        true
+      ]
+    },
+    {
+      "eq": [
+        "colour.Blue",
+        true
+      ]
+    },
+    {
+      "eq": [
+        "colour.Green",
+        true
+      ]
+    }
+  ]
+}
