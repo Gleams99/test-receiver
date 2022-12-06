@@ -16,3 +16,8 @@ artifacts:
   files:
     - 'execution_report.json'
     - 'execution_report.xml'
+reports:
+  execution-reports:
+    files:
+      - "execution_report.xml"
+    file-format: "JUNITXML"
