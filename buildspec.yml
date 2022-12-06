@@ -11,7 +11,7 @@ phases:
       - poetry install
   build:
     commands:
-      - poetry run execute-pytest --config $CWT_ExecutionConfiguration:-Collect_Tests
+      - poetry run execute-pytest --config $CWT_ExecutionConfiguration
 artifacts:
   files:
     - '**/*'
