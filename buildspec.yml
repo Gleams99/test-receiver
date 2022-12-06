@@ -14,4 +14,4 @@ phases:
       - poetry run execute-pytest --config $CWT_ExecutionConfiguration
 artifacts:
   files:
-    - '**/*'
+    - '.report.json'
