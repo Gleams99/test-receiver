@@ -1,0 +1,16 @@
+{
+  "and": [
+    {
+      "eq": [
+        "colour.Red",
+        true
+      ]
+    },
+    {
+      "eq": [
+        "colour.Yellow",
+        true
+      ]
+    }
+  ]
+}

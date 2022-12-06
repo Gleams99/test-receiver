@@ -1,0 +1,26 @@
+---
+common: &common
+  test_log_level: debug
+  system_internals:
+    enabled: false
+  cw_api_client:
+    cw_api_max_keepalive_connections: 5
+    cw_api_max_connections: 10
+    cw_api_rate_limit_enabled: true
+    cw_api_rate_limit_status_code: 429
+    cw_api_log_request_enabled: true
+    cw_api_log_response_enabled: true
+    cw_api_save_response_enabled: true
+
+internal:
+  <<: *common
+  component:
+    url: https://internal.component.co
+    debug: true
+    list_items:
+      - item_1
+      - item_2
+      - item_3
+    login:
+      username: first
+      password: Testing123
