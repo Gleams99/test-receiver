@@ -5,7 +5,7 @@ description = ""
 authors = ["Gleams API user <Stephen.Swannell+ghapi@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11.0"
+python = ">=3.9,<3.11.0"
 pytest = "^7.2.0"
 pytest-xdist = ">=2.5.0,<3.0.0"
 pytest-coveragemarkers = "^2.0.0"
