@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.9
+      python: 3.10
     commands:
       # install poetry
       - curl -sSL https://install.python-poetry.org | python3 -
@@ -11,7 +11,11 @@ phases:
       - poetry install
   build:
     commands:
-      - poetry run execute-pytest --config $CWT_ExecutionConfiguration
+      - >
+        poetry run execute-pytest
+        --config ${CWQA_EXECUTIONCONFIGURATION}
+        --pytest-args ${CWQA_ADDITIONALPYTESTARGS}
+        --target-env ${CWQA_TARGETENV}
 artifacts:
   files:
     - 'execution_report.json'
