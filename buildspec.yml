@@ -12,12 +12,11 @@ phases:
   build:
     commands:
       - EMPTY_STRING=''
-      - PYTEST_ARGS=${CWQA_ADDITIONALPYTESTARGS:$EMPTY_STRING}
-      - echo $PYTEST_ARGS
+      - PYTEST_ARGS='--pytest-args ${CWQA_ADDITIONALPYTESTARGS:$EMPTY_STRING}'
+      - echo 'PYTEST_ARGS:' + $PYTEST_ARGS
       - >
         poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION}
-        --pytest-args $PYTEST_ARGS
+        --config ${CWQA_EXECUTIONCONFIGURATION} $PYTEST_ARGS
 artifacts:
   files:
     - 'execution_report.json'
