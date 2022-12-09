@@ -13,9 +13,9 @@ phases:
     commands:
       - >
         poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION}
-        --pytest-args ${CWQA_ADDITIONALPYTESTARGS}
-        --target-env ${CWQA_TARGETENV}
+        --config ${CWQA_EXECUTIONCONFIGURATION:}
+        --pytest-args ${CWQA_ADDITIONALPYTESTARGS:}
+        --target-env ${CWQA_TARGETENV:}
 artifacts:
   files:
     - 'execution_report.json'
