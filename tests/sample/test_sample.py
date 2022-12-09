@@ -1,6 +1,5 @@
 import pytest
 import sys
-import time
 from loguru import logger
 
 
@@ -17,7 +16,6 @@ def test_sample_1():
 @pytest.mark.colour("Red", "Yellow")
 def test_sample_2():
     logger.debug("Executing test: test_sample_2")
-    assert False
     logger.debug("Finished test: test_sample_2")
 
 

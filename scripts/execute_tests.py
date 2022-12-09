@@ -110,9 +110,18 @@ def trigger_pytest(target_env: str, pytest_args: str, config: str, list_configs:
 
     if config:
         # config overwrites any supplied value in the args
-        target_env, pytest_args = config_lookup(config)
+        _target_env, _pytest_args = config_lookup(config)
+        if not target_env:
+            # if no override target_env is supplied then use config value
+            target_env = _target_env
+        if pytest_args:
+            # if override pytest args are supplied then merge with config
+            pytest_args = f"{_pytest_args} {pytest_args}"
+        else:
+            # if no override pytest args are supplied use config else merge
+            pytest_args = _pytest_args
 
-    if not target_env:
+    if not config and not target_env:
         raise TargetEnvironmentNotSpecified()
 
     print(f"Supplied {pytest_args=}")
