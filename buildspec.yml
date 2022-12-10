@@ -17,11 +17,11 @@ phases:
   build:
     commands:
       - |
-        if expr "${CWQA_ADDITIONALPYTESTARGS}" : "" >/dev/null; then
+        if [ "${CWQA_ADDITIONALPYTESTARGS}" = "" ]; then
+          echo 'Empty pytest args'
+        else
           echo 'Non-Empty pytest args'
           echo '${CWQA_ADDITIONALPYTESTARGS}'
-        else
-          echo 'Empty pytest args'
         fi
       #- export EMPTY_STRING=''
       #- export PYTEST_ARGS='--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if '${CWQA_ADDITIONALPYTESTARGS}' != '' else ''
