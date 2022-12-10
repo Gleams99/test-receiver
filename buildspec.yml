@@ -12,7 +12,6 @@ phases:
   build:
     commands:
       - EMPTY_STRING=''
-      - echo 'CWQA_ADDITIONALPYTESTARGS: ' + ${CWQA_ADDITIONALPYTESTARGS}
       - PYTEST_ARGS={{ '--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if ${CWQA_ADDITIONALPYTESTARGS} != '' else '' }}
       - echo 'PYTEST_ARGS:' + $PYTEST_ARGS
       - >
