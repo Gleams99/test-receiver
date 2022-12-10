@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    CWQA_ADDITIONALPYTESTARGS: ''
+    CWQA_ADDITIONALPYTESTARGS: 'hello world'
     CWQA_TARGETENV: ''
     
 phases:
@@ -18,9 +18,10 @@ phases:
     commands:
       - |
         if expr "${CWQA_ADDITIONALPYTESTARGS}" : "" >/dev/null; then
-          echo 'Empty pytest args'
+          echo 'Non-Empty pytest args'
+          echo '${CWQA_ADDITIONALPYTESTARGS}'
         else
-          echo 'Non-empty pytest args'
+          echo 'Empty pytest args'
         fi
       #- export EMPTY_STRING=''
       #- export PYTEST_ARGS='--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if '${CWQA_ADDITIONALPYTESTARGS}' != '' else ''
