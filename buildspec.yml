@@ -1,5 +1,10 @@
 version: 0.2
 
+env:
+  variables:
+    CWQA_ADDITIONALPYTESTARGS: ''
+    CWQA_TARGETENV: ''
+    
 phases:
   install:
     runtime-versions:
@@ -11,12 +16,18 @@ phases:
       - poetry install
   build:
     commands:
-      - EMPTY_STRING=''
-      - PYTEST_ARGS={{ '--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if ${CWQA_ADDITIONALPYTESTARGS} != '' else '' }}
-      - echo 'PYTEST_ARGS:' + $PYTEST_ARGS
-      - >
-        poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION} $PYTEST_ARGS
+      - |
+        if expr "${CWQA_ADDITIONALPYTESTARGS}" : "" >/dev/null; then
+          echo 'Empty pytest args'
+        else
+          echo 'Non-empty pytest args'
+        fi
+      #- export EMPTY_STRING=''
+      #- export PYTEST_ARGS='--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if '${CWQA_ADDITIONALPYTESTARGS}' != '' else ''
+      #- echo 'PYTEST_ARGS:' + $PYTEST_ARGS
+      #- >
+      #  poetry run execute-pytest
+      #  --config ${CWQA_EXECUTIONCONFIGURATION} $PYTEST_ARGS
 artifacts:
   files:
     - 'execution_report.json'
