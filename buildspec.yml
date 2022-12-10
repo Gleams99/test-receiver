@@ -17,11 +17,12 @@ phases:
   build:
     commands:
       - |
-        if [[ "${CWQA_ADDITIONALPYTESTARGS}" == "" ]]; then
-          echo 'Empty pytest args'
-        else
+        # if [[ -v "DOCKER_STARTUP_FIXTURES" && "$DOCKER_STARTUP_FIXTURES" != '' ]]; then
+        if [[ "${CWQA_ADDITIONALPYTESTARGS}" != "" ]]; then
           echo 'Non-Empty pytest args'
           echo '${CWQA_ADDITIONALPYTESTARGS}'
+        else
+          echo 'Empty pytest args'
         fi
       #- export EMPTY_STRING=''
       #- export PYTEST_ARGS='--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if '${CWQA_ADDITIONALPYTESTARGS}' != '' else ''
