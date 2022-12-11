@@ -29,3 +29,8 @@ def test_sample_3():
 def test_sample_4():
     logger.debug("Executing test: test_sample_4")
     logger.debug("Finished test: test_sample_4")
+
+
+@pytest.mark.colour("Grey")
+def test_will_fail():
+    assert False
