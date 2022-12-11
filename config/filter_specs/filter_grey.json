@@ -1,0 +1,10 @@
+{
+  "and": [
+    {
+      "eq": [
+        "colour.Grey",
+        true
+      ]
+    }
+  ]
+}

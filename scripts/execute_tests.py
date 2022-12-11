@@ -45,6 +45,10 @@ PREDEFINED_CONFIGS = {
         target_env="Internal",
         pytest_args="--filter-location config/filter_specs/filter_yellow_and_red.json",
     ),
+    "Grey": TestExecutionConfig(
+        target_env="Internal",
+        pytest_args="--filter-location config/filter_specs/filter_grey.json",
+    ),
     "Collect_Tests": TestExecutionConfig(
         target_env="Internal",
         pytest_args="--filter-location config/filter_specs/sample_filter.json --collect-only "
