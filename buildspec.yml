@@ -24,17 +24,17 @@ phases:
         fi
         echo "${CWQA_ADDITIONALPYTESTARGS}"
         if [[ "${CWQA_TARGETENV}" != "" ]]; then
-          export CWQA_TARGETENV="--target-env ${CWQA_TARGETENV}"
+          export CWQA_TARGETENV="--target-env \"${CWQA_TARGETENV}\""
         else
           export CWQA_TARGETENV=''
         fi
         echo "${CWQA_TARGETENV}"
       - >
         echo poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION} "${CWQA_ADDITIONALPYTESTARGS}" "${CWQA_TARGETENV}"
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_ADDITIONALPYTESTARGS} ${CWQA_TARGETENV}
       - >
         poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION} "${CWQA_ADDITIONALPYTESTARGS}" "${CWQA_TARGETENV}"
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_ADDITIONALPYTESTARGS} ${CWQA_TARGETENV}
 artifacts:
   files:
     - 'execution_report.json'
