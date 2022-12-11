@@ -17,31 +17,21 @@ phases:
   build:
     commands:
       - |
-        # if [[ -v "DOCKER_STARTUP_FIXTURES" && "$DOCKER_STARTUP_FIXTURES" != '' ]]; then
         if [[ "${CWQA_ADDITIONALPYTESTARGS}" != "" ]]; then
-          echo "Non-Empty pytest args"
-          echo "${CWQA_ADDITIONALPYTESTARGS}"
           CWQA_ADDITIONALPYTESTARGS="--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}"
         else
-          echo 'Empty pytest args'
           CWQA_ADDITIONALPYTESTARGS=''
         fi
         echo "${CWQA_ADDITIONALPYTESTARGS}"
         if [[ "${CWQA_TARGETENV}" != "" ]]; then
-          echo "Non-Empty pytest args"
-          echo "${CWQA_TARGETENV}"
           export CWQA_TARGETENV="--target-env ${CWQA_TARGETENV}"
         else
-          echo 'Empty pytest args'
           export CWQA_TARGETENV=''
         fi
         echo "${CWQA_TARGETENV}"
-      #- export EMPTY_STRING=''
-      #- export PYTEST_ARGS='--pytest-arg ${CWQA_ADDITIONALPYTESTARGS}' if '${CWQA_ADDITIONALPYTESTARGS}' != '' else ''
-      #- echo 'PYTEST_ARGS:' + $PYTEST_ARGS
-      #- >
-      #  poetry run execute-pytest
-      #  --config ${CWQA_EXECUTIONCONFIGURATION} $PYTEST_ARGS
+      - >
+        poetry run execute-pytest
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_ADDITIONALPYTESTARGS} ${CWQA_TARGETENV}
 artifacts:
   files:
     - 'execution_report.json'
