@@ -1,21 +1,28 @@
 version: 0.2
 
+env:
+  variables:
+    CWQA_TARGETENV: ''
+
 phases:
   install:
     runtime-versions:
       python: 3.9
     commands:
-      # install poetry
       - curl -sSL https://install.python-poetry.org | python3 -
       - export PATH=/root/.local/bin:$PATH
       - poetry install
   build:
     commands:
+      - |
+        if [[ "${CWQA_TARGETENV}" != "" ]]; then
+          export CWQA_TARGETENV="--target-env ${CWQA_TARGETENV}"
+        else
+          export CWQA_TARGETENV=''
+        fi
       - >
         poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION}
-        --pytest-args ${CWQA_ADDITIONALPYTESTARGS}
-        --target-env ${CWQA_TARGETENV}
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_TARGETENV}
 artifacts:
   files:
     - 'execution_report.json'
