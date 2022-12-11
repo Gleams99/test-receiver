@@ -18,7 +18,7 @@ phases:
     commands:
       - |
         if [[ "${CWQA_ADDITIONALPYTESTARGS}" != "" ]]; then
-          CWQA_ADDITIONALPYTESTARGS="--pytest-args ${CWQA_ADDITIONALPYTESTARGS}"
+          CWQA_ADDITIONALPYTESTARGS="--pytest-args \"${CWQA_ADDITIONALPYTESTARGS}\""
         else
           CWQA_ADDITIONALPYTESTARGS=''
         fi
