@@ -31,10 +31,10 @@ phases:
         echo "${CWQA_TARGETENV}"
       - >
         echo poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_ADDITIONALPYTESTARGS} ${CWQA_TARGETENV}
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_TARGETENV}
       - >
         poetry run execute-pytest
-        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_ADDITIONALPYTESTARGS} ${CWQA_TARGETENV}
+        --config ${CWQA_EXECUTIONCONFIGURATION} ${CWQA_TARGETENV}
 artifacts:
   files:
     - 'execution_report.json'
