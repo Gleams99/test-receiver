@@ -2,7 +2,6 @@ version: 0.2
 
 env:
   variables:
-    CWQA_ADDITIONALPYTESTARGS: ''
     CWQA_TARGETENV: ''
     
 phases:
@@ -17,12 +16,6 @@ phases:
   build:
     commands:
       - |
-        if [[ "${CWQA_ADDITIONALPYTESTARGS}" != "" ]]; then
-          CWQA_ADDITIONALPYTESTARGS="--pytest-args \"${CWQA_ADDITIONALPYTESTARGS}\""
-        else
-          CWQA_ADDITIONALPYTESTARGS=''
-        fi
-        echo "${CWQA_ADDITIONALPYTESTARGS}"
         if [[ "${CWQA_TARGETENV}" != "" ]]; then
           export CWQA_TARGETENV="--target-env \"${CWQA_TARGETENV}\""
         else
